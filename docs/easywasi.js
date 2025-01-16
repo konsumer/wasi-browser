@@ -170,6 +170,9 @@ export class WasiPreview1 {
   start (wasm) {
     this.setup(wasm)
     try {
+      if (instance.exports._initialize) {
+        instance.exports._initialize()
+      }
       if (wasm._start) {
         wasm._start()
       }
